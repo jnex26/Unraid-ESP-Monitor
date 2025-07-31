@@ -21,7 +21,7 @@ Some Good music ( I can recomend GHOST ) , a bit of paitence and a computer and 
 
 ##  Display
 
-They are normally in this order. 
+They are normally in this order, use any colour you want however this is the format I used
 
 |Screen Port| Wire Colour|
 |---------|--------|
@@ -49,6 +49,11 @@ Other Boards are avalible this is what I'm currently using I have a wiring diagr
 |16    | Green|
 |15    |Yellow|
 |6     |Backlight|
+
+![How i wired it up](https://github.com/jnex26/Unraid-ESP-Monitor/blob/main/media/20250731_154616.jpg) 
+
+I use superglue and activator to lock the wires in-place and I have soldered the S3 to the board, note the S3 is a bit too big to fit on that prototype. 
+
 
 # Build environment. 
 
