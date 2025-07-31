@@ -56,7 +56,7 @@ I've built this with the Ardino IDE
 
 https://www.arduino.cc/en/software/
 
-# ArdinoIDE 
+# ArduinoIDE 
 
 ## Setting up the IDE for Builds 
 
