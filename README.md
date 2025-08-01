@@ -20,6 +20,8 @@ https://www.aliexpress.com/item/1005008188339005.html?spm=a2g0o.order_list.order
 
 ![Altinate Screen](https://github.com/jnex26/Unraid-ESP-Monitor/blob/main/media/20250801_010039.jpg)
 
+you can see i have had to change the order of the cables going into the device, but I have kept the same colour codes. 
+
 # Other Things needed . 
 
 Prototype board and wires to connect them together, I've not done a Gerber yet, but it is really simple wiring, bascially A-2-B, some soldering skills are needed if your not a good solderer or don't want to try, ping me on reddit (same name) I'm in the UK and I can put a communicator board together and ship it out, I'm also going to do a gerber of a PCB, warning on the S3 it is MEGA wide which can make it awkward to solder inplace. 
