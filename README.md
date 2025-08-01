@@ -11,6 +11,13 @@ So this is a native unraid monitor I'll walk you though build and design.
 | ST7796S Screen (480x320) |  https://www.aliexpress.com/item/1005006175220737.html?spm=a2g0o.order_list.order_list_main.65.88591802qyroqp |  This is the screen above, with some work you should be able to get it working most SPI screens but you may need to adjust the organisation to showv everything  | 
 | ESP32 S3 | https://www.aliexpress.com/item/1005005051294262.html?spm=a2g0o.order_list.order_list_main.83.88591802qyroqp | so i'm using is an 'expensive' S3, however I have another working one with the ESP32D, i've tried with a micro but it gets MEGA hot |
 
+
+Alternative Larger Screen
+
+I have just received this screen and it works the same as the above just a bit larger. 
+
+https://www.aliexpress.com/item/1005008188339005.html?spm=a2g0o.order_list.order_list_main.29.3cdb1802Hg4hYs
+
 # Other Things needed . 
 
 Prototype board and wires to connect them together, I've not done a Gerber yet, but it is really simple wiring, bascially A-2-B, some soldering skills are needed if your not a good solderer or don't want to try, ping me on reddit (same name) I'm in the UK and I can put a communicator board together and ship it out, I'm also going to do a gerber of a PCB, warning on the S3 it is MEGA wide which can make it awkward to solder inplace. 
