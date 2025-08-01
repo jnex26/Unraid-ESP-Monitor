@@ -8,7 +8,7 @@
 #include <String.h>
 #include <WiFiClientSecure.h>
 #include <UnraidGraph.h>
-#include <creds.h>
+#include <creds.h> 
 
 
 // Large S3 Thingy
@@ -394,10 +394,10 @@ void systemStatBox() {
 
 void drawContainers() { 
   JsonDocument tempdoc;
-  unraid.debug(true);
-  int endBoundryx=480;
+  //unraid.debug(true);
+  int endBoundryx=477;
   int endBoundryy=215;
-  int startBoundryx=273;
+  int startBoundryx=275;
   int startBoundryy=140;
   bool oddEven=false;
   int c;
@@ -405,28 +405,37 @@ void drawContainers() {
   tempdoc = unraid.getUnraidContainers();
   String doc ;
   int r=10;
-  int b=0;
-  int x=startBoundryx+r;
+  int b=3;
+  int x=startBoundryx+r+b;
   int y=startBoundryy+r;
   int hexcount = tempdoc["data"]["docker"]["containers"].size();
   for (int i=0;i<=tempdoc["data"]["docker"]["containers"].size();i++) {
-    Serial.println(i);
-    serializeJson(tempdoc["data"]["docker"]["containers"][i],Serial);
+   // Serial.println(i);
+   // serializeJson(tempdoc["data"]["docker"]["containers"][i],Serial);
     if (String(tempdoc["data"]["docker"]["containers"][i]["state"]) == "RUNNING") {
       colour = returnCol(0,255,0);
     } else {
-       colour = returnCol(255,0,0);
-    }
+      if (String(tempdoc["data"]["docker"]["containers"][i]["autoStart"]) == "true") {
+          colour = returnCol(255,0,0);
+    } else {
+       colour = returnCol(0,0,255);
+    }}
     drawHex(x,y,r,colour);
-    x=x+(r*2)+5+b;
-    if (x>=endBoundryx) {
+    if (String(tempdoc["data"]["docker"]["containers"][i]["autoStart"]) == "true") {
+      colour = returnCol(0,255,0);
+    } else {
+       colour = returnCol(0,0,255);
+    }
+    drawHexOutline(x,y,r+1,colour);
+    x=x+(r*2)+b;
+    if ((x+r)>=endBoundryx) {
       if (oddEven) {
-        x=startBoundryx+r;
-        y=y+(r*2)+2;
+        x=startBoundryx+r+b+2;
+        y=y+(r*2)+b;
         oddEven=false;
       } else {
-        x=startBoundryx-1;
-        y=y+(r*2)+2;
+        x=startBoundryx+1;
+        y=y+(r*2)+b;
         oddEven=true;
       }
     }
@@ -438,7 +447,7 @@ void drawContainers() {
   //  Serial.println(c);
   //  Serial.println(__id);
   //  }
-  unraid.debug(false);
+  //unraid.debug(false);
 }
 
 
@@ -627,6 +636,28 @@ void drawHex(int x, int y, int radius, uint16_t colour) {
   }
 }
 
+void drawHexOutline(int x, int y, int radius, uint16_t colour) {
+  int x1, y1, x2, y2;
+  double th, startAngle;
+
+  int sides = 6;
+  int angle = 0;
+  // we work in radians here
+  startAngle = PI / 180 * (angle - 90.0);  // make 0 degrees straight up
+  th = startAngle;
+  x2 = x + round(cos(th) * radius);  // get first vertex
+  y2 = y + round(sin(th) * radius);
+
+  for (uint8_t i = 1; i <= sides; i++) {
+    x1 = x2;                                 // old vertex is...
+    y1 = y2;                                 // ...the new startpoint
+    th = startAngle + (i * TWO_PI) / sides;  // angle of next vertex in radians
+    x2 = x + round(cos(th) * radius);        // get next vertex
+    y2 = y + round(sin(th) * radius);
+    tft.drawLine(x1,y1,x2,y2,colour);
+    //tft.fillTriangle(x, y, x1, y1, x2, y2, colour);
+  }
+}
 
 
 void clearScreen() {
